@@ -1,25 +1,25 @@
 package src.vocab;
 
-// 단어 1개 정보
 public class Word {
     private String english;
-    private String meaning;
+    private String korean;
 
-    public Word(String english, String meaning) {
+    public Word(String english, String korean) {
         this.english = english;
-        this.meaning = meaning;
+        this.korean = korean;
     }
 
     public String getEnglish() {
         return english;
     }
 
-    public String getMeaning() {
-        return meaning;
+    public String getKorean() {
+        return korean;
     }
 
     @Override
     public String toString() {
-        return english + " : " + meaning;
+        return english + " : " + korean;
     }
 }
+
