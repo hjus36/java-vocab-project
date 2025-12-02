@@ -55,7 +55,7 @@ public class MainFrame extends JFrame {
         btnPanel.add(quizBtn);
         add(btnPanel, BorderLayout.SOUTH);
 
-        // 추가 버튼: 입력 검사 후 워드북에 추가
+        // 추가 버튼: 입력 검사 후 단어장에 추가
         addBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String eng = engField.getText();
@@ -87,7 +87,7 @@ public class MainFrame extends JFrame {
             }
         });
 
-        // 전체 목록 버튼: 현재 워드북 내용을 출력
+        // 전체 목록 버튼: 현재 단어장 내용을 출력
         listBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 outputArea.setText("");
@@ -105,7 +105,7 @@ public class MainFrame extends JFrame {
             }
         });
 
-        // 불러오기 버튼: FileManager로 다시 로드 (메모리 초기화 포함)
+        // 불러오기 버튼: FileManager로 다시 로드
         loadBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 fm.load(book);
@@ -120,7 +120,7 @@ public class MainFrame extends JFrame {
             }
         });
 
-        // 통계 버튼: 현재는 플레이스홀더(미구현)
+        // 통계 버튼: 3주차 구현 예정
         statsBtn.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
                  new StatsFrame(); // 아직 미구현
