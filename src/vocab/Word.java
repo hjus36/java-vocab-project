@@ -1,29 +1,26 @@
 package src.vocab;
 
-// 단어 한 개 저장용 클래스
 public class Word {
 
-    private String english;   // 영어
-    private String meaning;   // 뜻
+    private String english; // 영어 단어
+    private String korean;  // 한국어 뜻
 
-    // 생성자 
-    public Word(String english, String meaning) {
+    // 생성자
+    public Word(String english, String korean) {
         this.english = english;
-        this.meaning = meaning;   
+        this.korean = korean;
     }
 
-    // getter들 (getEnglish , getMeaning)
     public String getEnglish() {
         return english;
     }
 
-    public String getMeaning() {  
-        return meaning;
+    public String getKorean() {
+        return korean;
     }
 
     @Override
     public String toString() {
-        return english + " : " + meaning;   
+        return english + " : " + korean;
     }
-    // 출력할 때 알아보기 쉽게 하기 위해 선언
 }
