@@ -24,7 +24,9 @@ public class QuizFrame extends JFrame {
         setLocationRelativeTo(null); // 화면 중앙에 띄우기
 
         if (book.size() == 0) {
-            JOptionPane.showMessageDialog(null, "단어가 없습니다.");
+            JOptionPane.showMessageDialog(
+                null, "단어가 없습니다."
+            );
             dispose(); // 단어 없으면 창 닫음
             return;
         }

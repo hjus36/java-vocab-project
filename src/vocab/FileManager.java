@@ -47,7 +47,7 @@ public class FileManager {
             br.close();
             System.out.println("불러오기 완료: " + FILE_PATH);
         } catch (FileNotFoundException e) {
-            // 파일이 없을 경우 (첫 실행 등)
+            // 파일이 없을 경우
             System.out.println("저장된 파일이 없습니다.");
         } catch (IOException e) {
             // 읽기 중 오류
