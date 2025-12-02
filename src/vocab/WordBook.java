@@ -1,7 +1,6 @@
 package src.vocab;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 //단어장 클래스
 public class WordBook {

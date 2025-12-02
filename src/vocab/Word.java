@@ -9,7 +9,7 @@ public class Word {
     // 생성자 
     public Word(String english, String meaning) {
         this.english = english;
-        this.meaning = meaning;
+        this.meaning = meaning;   
     }
 
     // getter들 (getEnglish , getMeaning)
@@ -17,16 +17,13 @@ public class Word {
         return english;
     }
 
-    public String getMeaning() {
+    public String getMeaning() {  
         return meaning;
     }
 
-    
     @Override
     public String toString() {
-        return english + " : " + meaning;
+        return english + " : " + meaning;   
     }
-    // 출력할께 알아보기 쉽게하기 위해 선언
-
-    
+    // 출력할 때 알아보기 쉽게 하기 위해 선언
 }
