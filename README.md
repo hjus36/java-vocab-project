@@ -25,7 +25,7 @@
 - `src/vocab/FileManager.java` : 파일 저장/불러오기
 - `src/vocab/MainFrame.java` : GUI 메인 화면
 - `src/vocab/QuizFrame.java` : 랜덤 퀴즈 화면
-- `src/vocab/QuizFrame.java` : 퀴즈 문제 제공 및 정답 판별 로직
+- `src/vocab/QuizManager.java` : 퀴즈 문제 제공 및 정답 판별 로직
 - `src/vocab/StatsFrame.java` : 통계 GUI (3주차 구현 예정)
 
 ## 현재 구현 현황 (2주차)
