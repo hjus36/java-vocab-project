@@ -22,4 +22,3 @@ public class Word {
         return english + " : " + korean;
     }
 }
-

@@ -1,1 +1,100 @@
-start,����
+Abstraction,추상화
+Asynchronous,비동기
+AtomicOperation,원자적 연산
+Backpressure,역압(흐름 제어)
+Bottleneck,병목
+BreadthFirstSearch,너비 우선 탐색
+Concurrency,동시성
+Consistency,일관성
+Contention,경쟁(자원 경쟁)
+Deterministic,결정적
+DistributedSystem,분산 시스템
+Elasticity,탄력성(시스템 확장성)
+Encapsulation,캡슐화
+Endianness,엔디안 방식
+Entropy,엔트로피
+FaultTolerance,결함 허용
+FederatedLearning,연합 학습
+Granularity,세분화 정도
+Heuristic,휴리스틱
+Idempotent,멱등성
+Immutable,불변
+Inference,추론(기계학습)
+Inheritance,상속
+InterruptLatency,인터럽트 지연
+Jitter,지터
+LatencyHiding,지연 은폐
+LoadShedding,부하 차단
+Marshaling,마샬링(데이터 직렬화)
+Microarchitecture,마이크로아키텍처
+Middleware,미들웨어
+NamespaceCollision,네임스페이스 충돌
+NonvolatileMemory,비휘발성 메모리
+Orthogonality,직교성
+Oscilloscope,오실로스코프
+Overfitting,과적합
+Parallelism,병렬성
+Persistence,영속성
+Pipelining,파이프라이닝
+Preemption,선점
+PropagationDelay,전파 지연
+Provisioning,프로비저닝
+Quantization,양자화
+RaceCondition,경쟁 상태
+Reentrancy,재진입성
+Regression,회귀(ML)
+Rehydration,재구성(상태 복원)
+Reliability,신뢰성
+Replication,복제
+ResidualNetwork,잔차 네트워크
+Scalability,확장성
+SchedulerTick,스케줄러 틱
+SegmentationFault,세그멘테이션 오류
+Serialization,직렬화
+ShadowRegister,섀도 레지스터
+ShortCircuit,단락
+SignalIntegrity,신호 무결성
+SoftRealtime,소프트 실시간
+SpectralAnalysis,스펙트럼 분석
+Stabilization,안정화
+Synchronization,동기화
+Syscall,시스템 호출
+ThermalThrottling,열 스로틀링
+ThroughputOptimization,처리량 최적화
+TimeSlice,타임 슬라이스
+Tokenization,토큰화
+Transconductance,트랜스컨덕턴스
+TriStateBuffer,3상 버퍼
+Undervoltage,저전압
+Virtualization,가상화
+VoltageDivider,전압 분배기
+WorkStealing,작업 훔치기 스케줄링
+ZeroCopy,제로 카피
+Aliasing,에일리어싱
+Amortization,상각(시간 복잡도 관점)
+Arbitration,중재(버스 중재)
+Bootstrap,부트스트랩(초기화)
+ChannelCapacity,채널 용량
+ClockDrift,클럭 드리프트
+Cohesion,응집도
+Coupling,결합도
+Debouncing,디바운싱
+Degradation,성능 저하
+Diffraction,회절
+Electromigration,전자 이동
+FirmwareOverTheAir,무선 펌웨어 업데이트(OTA)
+GarbageCollection,가비지 컬렉션
+HashCollision,해시 충돌
+Hysteresis,히스테리시스
+Interference,간섭
+Metadata,메타데이터
+Metastability,메타안정성
+ModalAnalysis,모달 분석
+Overcurrent,과전류
+ParityCheck,패리티 검사
+PhaseShift,위상 이동
+Quorum,정족수(분산 시스템)
+Resilience,복원력
+RingOscillator,링 발진기
+SaturationRegion,포화 영역
+SchmittTrigger,슈미트 트리거
