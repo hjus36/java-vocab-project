@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordBook {
+    
 
     // 2주차: 단어들을 넣어 둘 리스트 생성
     private List<Word> words = new ArrayList<>();

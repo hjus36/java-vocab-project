@@ -10,7 +10,7 @@ public class QuizManager {
         this.book = book;
     }
 
-    // 랜덤 한 문제 가져오기
+    // 랜덤 단어 반환 (없으면 null)
     public Word getRandomWord() {
         int n = book.size();
         if (n == 0)
@@ -19,7 +19,7 @@ public class QuizManager {
         return book.getAll().get(idx);
     }
 
-    // 정답 판별
+    // 정답 검사
     public boolean check(String answer, Word w) {
         return w.getKorean().equals(answer);
     }

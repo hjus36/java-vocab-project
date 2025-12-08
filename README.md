@@ -9,6 +9,7 @@
 - 단어장 저장 및 불러오기 (파일 입출력)
 - 랜덤 퀴즈 출제
 - 간단한 GUI 화면
+- 학습 통계 제공(아직 미구현 상태)
 
 ## 개발 환경
 
@@ -21,5 +22,21 @@
 - `src/vocab/App.java` : 메인 실행 클래스
 - `src/vocab/Word.java` : 단어 한 개 정보
 - `src/vocab/WordBook.java` : 여러 단어 관리
-- `src/vocab/FileManager.java` : 파일 저장/불러오기 예정
-- `src/vocab/MainFrame.java` : GUI 화면 예정
+- `src/vocab/FileManager.java` : 파일 저장/불러오기
+- `src/vocab/MainFrame.java` : GUI 메인 화면
+- `src/vocab/QuizFrame.java` : 랜덤 퀴즈 화면
+- `src/vocab/QuizManager.java` : 퀴즈 문제 제공 및 정답 판별 로직
+- `src/vocab/StatsFrame.java` : 통계 GUI (3주차 구현 예정)
+
+## 현재 구현 현황 (2주차)
+
+| 클래스명       | 구현 상태   | 설명                                                     |
+|----------------|-------------|----------------------------------------------------------|
+| **Word**       | 완성      | 단어 데이터 구조(영단어/뜻) 정상 구현                    |
+| **WordBook**   | 부분완성 | 단어 추가·삭제·검색·리스트 기능 정상 동작. 중복 처리 기능 추가 예정   |
+| **FileManager**| 부분완성 | 파일 저장/불러오기 동작함. 예외 처리·디렉토리 자동 생성은 추후 보완 예정 |
+| **QuizManager**| 부분완성 | 랜덤 문제 출제/정답 판별 구현. GUI 퀴즈와 통계 기능은 미연동 |
+| **App**        | 완성      | GUI 실행 중심 구조로 변경됨.                      |
+| **MainFrame**  | 부분완성 | 단어 추가·삭제·목록·저장·불러오기·퀴즈·통계 버튼 구현. 디자인/통계 기능은 미완성 |
+| **QuizFrame**  | 부분완성 | 간단한 랜덤 문제 GUI 동작. 정답 기록·통계 연결은 3주차 예정 |
+| **StatsFrame** | 미완성   | 통계 GUI 틀만 존재. 실제 통계 기능은 3주차에 구현 예정 |
