@@ -3,64 +3,148 @@ package src.vocab;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 
 public class QuizFrame extends JFrame {
 
-    private WordBook book;
-    private Word current;
-    private Random rand = new Random();
+    private final WordBook book;
+    private final QuizManager quizManager;
 
-    private JLabel engLabel;
-    private JTextField answerField;
-    private JButton checkBtn;
+    private JLabel questionLabel;     // "영단어: Abstraction"
+    private JTextField answerField;   // 사용자 입력
+    private JButton checkButton;      // 정답 확인
+    private JButton closeButton;      // 닫기
 
-    public QuizFrame(WordBook book) {
+    private Word currentWord;         // 현재 문제로 출제된 단어
+
+    public QuizFrame(WordBook book, QuizManager quizManager) {
         this.book = book;
+        this.quizManager = quizManager;
 
-        setTitle("퀴즈");
-        setSize(300, 200);
-        setLayout(new GridLayout(3, 1));
-        setLocationRelativeTo(null); // 화면 중앙에 띄우기
+        setTitle("영어 단어 퀴즈");
+        setSize(400, 200);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        if (book.size() == 0) {
+        initComponents();
+        setVisible(true);
+
+        loadNextQuestion();
+    }
+
+    private void initComponents() {
+        setLayout(new BorderLayout(10, 10));
+
+        // 상단: 문제 표시
+        questionLabel = new JLabel("문제를 불러오는 중...", SwingConstants.CENTER);
+        questionLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+        add(questionLabel, BorderLayout.NORTH);
+
+        // 중앙: 정답 입력 필드
+        JPanel centerPanel = new JPanel(new BorderLayout(5, 5));
+        JLabel label = new JLabel("뜻(한글) 입력: ");
+        answerField = new JTextField();
+        centerPanel.add(label, BorderLayout.WEST);
+        centerPanel.add(answerField, BorderLayout.CENTER);
+        add(centerPanel, BorderLayout.CENTER);
+
+        // 하단: 버튼들
+        JPanel bottomPanel = new JPanel();
+        checkButton = new JButton("정답 확인");
+        closeButton = new JButton("닫기");
+        bottomPanel.add(checkButton);
+        bottomPanel.add(closeButton);
+        add(bottomPanel, BorderLayout.SOUTH);
+
+        // 이벤트 처리
+        checkButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkAnswer();
+            }
+        });
+
+        // 엔터 키로도 정답 확인 가능
+        answerField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkAnswer();
+            }
+        });
+
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+    }
+
+    // 다음 문제 불러오기
+    private void loadNextQuestion() {
+        if (book.isEmpty()) {
             JOptionPane.showMessageDialog(
-                null, "단어가 없습니다."
+                    this,
+                    "단어장이 비어 있습니다.\n먼저 단어를 추가해 주세요.",
+                    "알림",
+                    JOptionPane.INFORMATION_MESSAGE
             );
-            dispose(); // 단어 없으면 창 닫음
+            dispose();
             return;
         }
 
-        int idx = rand.nextInt(book.size()); // Random을 통한 무작위 출제
-        current = book.getAll().get(idx);
+        currentWord = quizManager.getRandomWord();
+        if (currentWord == null) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "문제를 가져올 수 없습니다.",
+                    "알림",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            dispose();
+            return;
+        }
 
-        engLabel = new JLabel("영단어: " + current.getEnglish(), SwingConstants.CENTER);
-        answerField = new JTextField();
-        checkBtn = new JButton("정답 확인");
+        questionLabel.setText("영단어: " + currentWord.getEnglish());
+        answerField.setText("");
+        answerField.requestFocus();
+    }
 
-        add(engLabel);
-        add(answerField);
-        add(checkBtn);
+    // 정답 확인 로직
+    private void checkAnswer() {
+        if (currentWord == null) {
+            return;
+        }
 
-        checkBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String user = answerField.getText().trim();
-                
-                if (user.equals(current.getKorean())) {
-                    JOptionPane.showMessageDialog(QuizFrame.this, "정답!");
-                } else {
-                    JOptionPane.showMessageDialog(QuizFrame.this, "오답!\n정답: " + current.getKorean());
-                }
-            }
-        });
+        String userAns = answerField.getText();
+        if (userAns == null || userAns.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "답을 입력해 주세요.",
+                    "알림",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
 
-        // 엔터키로도 정답 확인
-        answerField.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                checkBtn.doClick();
-            }
-        });
+        boolean correct = quizManager.checkAnswer(currentWord, userAns);
 
-        setVisible(true);
+        if (correct) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "정답입니다!",
+                    "결과",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "틀렸습니다.\n정답: " + currentWord.getMeaning(),
+                    "결과",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+        }
+
+        // 다음 문제로 넘어가기
+        loadNextQuestion();
     }
 }
