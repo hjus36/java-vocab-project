@@ -36,7 +36,7 @@ public class QuizFrame extends JFrame {
 
         // 상단: 문제 표시
         questionLabel = new JLabel("문제를 불러오는 중...", SwingConstants.CENTER);
-        questionLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+        questionLabel.setFont(new Font("SANS_SERIF", Font.BOLD, 16));
         add(questionLabel, BorderLayout.NORTH);
 
         // 중앙: 정답 입력 필드

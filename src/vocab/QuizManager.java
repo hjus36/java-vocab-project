@@ -25,7 +25,7 @@ public class QuizManager {
         return list.get(idx);
     }
 
-    // 정답 체크 + 통계 업데이트
+    // 정답 체크 및 통계 업데이트
     public boolean checkAnswer(Word questionWord, String userAnswer) {
         if (questionWord == null) return false;
 

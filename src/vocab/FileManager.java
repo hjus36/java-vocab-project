@@ -69,12 +69,4 @@ public class FileManager {
         }
     }
 
-    // 기본(전공) 단어장용 편의 메서드 - 원래 코드와 호환용
-    public boolean save(WordBook book) {
-        return save(book, BookType.MAJOR);
-    }
-
-    public boolean load(WordBook book) {
-        return load(book, BookType.MAJOR);
-    }
 }

@@ -21,12 +21,12 @@ public class StatsFrame extends JFrame {
         setLayout(new BorderLayout(10, 10));
 
         JLabel titleLabel = new JLabel("통계 정보", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+        titleLabel.setFont(new Font("SANS_SERIF", Font.BOLD, 18));
         add(titleLabel, BorderLayout.NORTH);
 
         JTextArea area = new JTextArea();
         area.setEditable(false);
-        area.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+        area.setFont(new Font("SANS_SERIF", Font.PLAIN, 14));
 
         StringBuilder sb = new StringBuilder();
         sb.append("[단어장 통계]\n");

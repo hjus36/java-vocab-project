@@ -73,7 +73,7 @@ public class MainFrame extends JFrame {
         // ===== 중앙: 출력 영역 =====
         outputArea = new JTextArea();
         outputArea.setEditable(false);
-        outputArea.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+        outputArea.setFont(new Font("SANS_SERIF", Font.PLAIN, 13));
         JScrollPane scrollPane = new JScrollPane(outputArea);
         scrollPane.setBorder(BorderFactory.createTitledBorder("출력"));
         add(scrollPane, BorderLayout.CENTER);
