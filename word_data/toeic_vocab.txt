@@ -1,0 +1,100 @@
+abandon,버리다 포기하다
+abolish,폐지하다
+absorb,흡수하다
+abundant,풍부한
+access,접근 권한
+accomplish,성취하다
+accounting,회계
+accurate,정확한
+accuse,비난하다 고소하다
+achieve,달성하다
+acquire,획득하다
+addition,추가
+adequate,충분한 적절한
+adjacent,인접한
+adjust,조정하다
+administration,경영진 행정부
+advantage,이점
+advertise,광고하다
+affect,영향을 미치다
+affordable,알맞은 가격의
+agency,대리점 기관
+agenda,의제 안건
+agreement,계약 합의
+allocate,할당하다 배분하다
+announce,발표하다 알리다
+annual,연례의 매년의
+anticipate,예상하다 기대하다
+appliance,가전 제품
+applicant,지원자
+appointment,약속 임명
+approval,승인
+approximate,대략의
+asset,자산 이점
+assignment,과제 업무
+assume,가정하다 떠맡다
+attach,붙이다 첨부하다
+attendance,출석 참석
+audience,청중 관객
+authorize,인가하다 허가하다
+avoid,피하다
+award,상 상을 수여하다
+balance,잔고 균형
+benefit,이익 혜택
+branch,지점 지사
+budget,예산
+candidate,후보 지원자
+capacity,수용 능력 용량
+career,경력 직업
+cargo,화물
+catalog,목록 카탈로그
+cater,음식을 공급하다
+certificate,증명서 자격증
+chairperson,의장 사회자
+client,고객 의뢰인
+colleague,동료
+commercial,상업의 광고
+committee,위원회
+complaint,불평 항의
+comprehensive,포괄적인
+conference,회의 학회
+confirm,확인하다
+consent,동의 동의하다
+conserve,보존하다 절약하다
+consider,고려하다
+consult,상담하다 참고하다
+consumer,소비자
+contract,계약 계약하다
+contribute,기여하다 기부하다
+convenient,편리한
+corporation,기업 법인
+courier,택배 기사 급송 택배
+criteria,기준
+deadline,마감 기한
+deal,거래 다루다
+decrease,감소 감소하다
+defective,결함이 있는
+delay,지연 연기하다
+deliver,배달하다 전달하다
+departure,출발
+deposit,예금 보증금
+describe,묘사하다 설명하다
+destination,목적지
+detail,세부사항
+device,장치 기기
+discount,할인 할인하다
+donate,기부하다
+earnings,수입 소득
+effective,효과적인 시행되는
+efficiency,효율
+eligible,자격이 있는
+employee,직원
+encourage,격려하다 장려하다
+equipment,장비 설비
+estimate,견적 추정하다
+evaluate,평가하다
+exceed,초과하다 능가하다
+exception,예외
+expand,확대하다 확장하다
+experience,경험 경험하다
+export,수출 수출하다
