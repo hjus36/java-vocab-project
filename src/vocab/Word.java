@@ -29,7 +29,7 @@ public class Word {
         return english + " : " + meaning;
     }
 
-    // 영어 단어(대소문자 구분 없이)만으로 동일 여부 판단
+    // 소문자로 통일 후 비교
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
