@@ -10,16 +10,16 @@ public class Word {
     private String meaning;   // 뜻(한국어 의미)
 
   
-    // 2주차: 생성자 작성 (단어 생성 시 영어/뜻 초기화)
+    // 2주차: 생성자 작성
    
     public Word(String english, String meaning) {
         this.english = english;
         this.meaning = meaning;
     }
 
-    // ----------------------------------------------------------
+    
     // 2주차: 단어 정보 조회용 getter 메소드
-    // ----------------------------------------------------------
+   
     public String getEnglish() {
         return english;
     }
