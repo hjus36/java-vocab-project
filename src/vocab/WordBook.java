@@ -36,17 +36,6 @@ public class WordBook {
         return false;
     }
 
-    // 영어 단어로 검색 (완전 일치)
-    public Word find(String english) {
-        if (english == null) return null;
-        for (Word w : words) {
-            if (w.getEnglish() != null &&
-                w.getEnglish().equalsIgnoreCase(english)) {
-                return w;
-            }
-        }
-        return null;
-    }
 
     // 전체 단어 리스트 반환 (복사본)
     public List<Word> getAll() {
