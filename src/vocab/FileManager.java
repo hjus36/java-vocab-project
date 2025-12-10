@@ -68,5 +68,31 @@ public class FileManager {
             return false;
         }
     }
+    // 오답노트 저장(별도의 파일)
+    public boolean saveWrongNotes(java.util.List<Word> wrongs, BookType type) {
+        if (wrongs == null || wrongs.isEmpty()) {
+            return false; // 저장할 오답이 없다면 false 반환
+        }
 
+        File file = new File(type.getWrongPath());
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs();
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(
+                new OutputStreamWriter(
+                        new FileOutputStream(file),
+                        StandardCharsets.UTF_8))) {
+
+            for (Word w : wrongs) {
+                bw.write(w.getEnglish() + "," + w.getMeaning());
+                bw.newLine();
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -88,8 +88,9 @@ public class MainFrame extends JFrame {
         JButton saveButton = new JButton("저장");
         JButton loadButton = new JButton("불러오기");
         JButton quizButton = new JButton("퀴즈");
-        JButton statsButton = new JButton("통계");
         JButton wrongNoteButton = new JButton("오답노트");
+        JButton wrongQuizButton = new JButton("오답 퀴즈");
+        JButton statsButton = new JButton("통계");
 
 
         buttonPanel.add(addButton);
@@ -99,8 +100,10 @@ public class MainFrame extends JFrame {
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
         buttonPanel.add(quizButton);
-        buttonPanel.add(statsButton);
         buttonPanel.add(wrongNoteButton);
+        buttonPanel.add(wrongQuizButton);
+        buttonPanel.add(statsButton);
+        
 
         add(buttonPanel, BorderLayout.SOUTH);
 
@@ -113,6 +116,10 @@ public class MainFrame extends JFrame {
                 BookType selected = (BookType) bookSelector.getSelectedItem();
                 if (selected != null) {
                     currentType = selected;
+                    
+                    // 단어장 바뀔 때 오답노트 초기화
+                    quizManager.clearWrongList();
+
                     // 단어장 선택이 바뀔 때 해당 파일에서 다시 불러오기
                     boolean ok = fileManager.load(book, currentType);
                     if (ok) {
@@ -199,6 +206,14 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 showWrongNotes();
+            }
+        });
+
+        // 오답퀴즈
+        wrongQuizButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openWrongQuiz();
             }
         });
     }
@@ -376,7 +391,7 @@ public class MainFrame extends JFrame {
             );
             return;
         }
-        new QuizFrame(book, quizManager);
+        new QuizFrame(book, quizManager, fileManager, currentType, false);
     }
 
     // 통계 창 열기
@@ -400,5 +415,19 @@ public class MainFrame extends JFrame {
         }
 
         outputArea.setText(sb.toString());
+    }
+
+    // 오답퀴즈 열기
+    private void openWrongQuiz() {
+        if (!quizManager.hasWrongNotes()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "오답노트가 비어 있습니다.\n먼저 퀴즈를 풀어서 오답을 만들어 주세요.",
+                    "오답 퀴즈 시작 불가",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+        new QuizFrame(book, quizManager, fileManager, currentType, true);
     }
 }

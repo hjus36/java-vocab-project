@@ -27,6 +27,13 @@ public class QuizManager {
         return list.get(idx);
     }
 
+    // 오답 리스트에서 랜덤 단어 하나 반환
+    public Word getRandomWrongWord() {
+        if (wrongList.isEmpty()) return null;
+        int idx = random.nextInt(wrongList.size());
+        return wrongList.get(idx);
+    }    
+
     // 정답 체크 및 통계 업데이트
     public boolean checkAnswer(Word questionWord, String userAnswer) {
         if (questionWord == null) return false;
@@ -39,7 +46,10 @@ public class QuizManager {
         if (isCorrect) {
             correctAnswers++;
         } else {
-            wrongList.add(questionWord); // 오답이면 오답 리스트에 추가
+            // 오답이면 오답리스트에 등록 (중복 방지)
+            if (!wrongList.contains(questionWord)) {
+                wrongList.add(questionWord);
+            }
         }
 
         return isCorrect;
@@ -60,6 +70,10 @@ public class QuizManager {
 
     public List<Word> getWrongList() {
         return new ArrayList<>(wrongList);
+    }
+
+    public boolean hasWrongNotes() {
+        return !wrongList.isEmpty();
     }
 
     public void clearWrongList() {
