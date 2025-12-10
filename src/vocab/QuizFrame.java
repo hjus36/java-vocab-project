@@ -16,9 +16,15 @@ public class QuizFrame extends JFrame {
 
     private Word currentWord;         // 현재 문제로 출제된 단어
 
+    private int startTotalQuestions;
+    private int startCorrectAnswers;
+
     public QuizFrame(WordBook book, QuizManager quizManager) {
         this.book = book;
         this.quizManager = quizManager;
+
+        this.startTotalQuestions = quizManager.getTotalQuestions();
+        this.startCorrectAnswers = quizManager.getCorrectAnswers();
 
         setTitle("영어 단어 퀴즈");
         setSize(400, 200);
@@ -74,7 +80,16 @@ public class QuizFrame extends JFrame {
         closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                showQuizSummary();
                 dispose();
+            }
+        });
+
+        // X 버튼으로 닫을 때도 요약 보여주기
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                showQuizSummary();
             }
         });
     }
@@ -146,5 +161,39 @@ public class QuizFrame extends JFrame {
 
         // 다음 문제로 넘어가기
         loadNextQuestion();
+    }
+    // 퀴즈 세션 요약 보여주기
+    private void showQuizSummary() {
+        int endTotal = quizManager.getTotalQuestions();
+        int endCorrect = quizManager.getCorrectAnswers();
+
+        int sessionTotal = endTotal - startTotalQuestions;
+        int sessionCorrect = endCorrect - startCorrectAnswers;
+
+        if (sessionTotal <= 0) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "이번 퀴즈 세션에서 푼 문제가 없습니다.",
+                    "퀴즈 요약",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+
+        double sessionAccuracy = (sessionCorrect * 100.0) / sessionTotal;
+
+        String msg =
+                "이번 퀴즈 요약\n"
+                + "------------------------\n"
+                + "풀이한 문제 수 : " + sessionTotal + "개\n"
+                + "맞힌 문제 수   : " + sessionCorrect + "개\n"
+                + "정답률         : " + String.format("%.1f", sessionAccuracy) + "%";
+
+        JOptionPane.showMessageDialog(
+                this,
+                msg,
+                "퀴즈 요약",
+                JOptionPane.INFORMATION_MESSAGE
+        );
     }
 }

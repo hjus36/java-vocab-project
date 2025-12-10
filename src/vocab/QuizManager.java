@@ -8,6 +8,8 @@ public class QuizManager {
     private final WordBook book;
     private final Random random = new Random();
 
+    private final List<Word> wrongList = new ArrayList<>(); // 오답노트 저장용 리스트
+
     private int totalQuestions;   // 전체 푼 문제 수
     private int correctAnswers;   // 정답 수
 
@@ -36,6 +38,8 @@ public class QuizManager {
         totalQuestions++;
         if (isCorrect) {
             correctAnswers++;
+        } else {
+            wrongList.add(questionWord); // 오답이면 오답 리스트에 추가
         }
 
         return isCorrect;
@@ -53,6 +57,16 @@ public class QuizManager {
         if (totalQuestions == 0) return 0.0;
         return (correctAnswers * 100.0) / totalQuestions;
     }
+
+    public List<Word> getWrongList() {
+        return new ArrayList<>(wrongList);
+    }
+
+    public void clearWrongList() {
+        wrongList.clear();
+    }
+
+
 
     public String getStatsString() {
         if (totalQuestions == 0) {

@@ -36,7 +36,7 @@ public class WordBook {
         return false;
     }
 
-    // 영어 단어로 검색
+    // 영어 단어로 검색 (완전 일치)
     public Word find(String english) {
         if (english == null) return null;
         for (Word w : words) {
@@ -65,8 +65,37 @@ public class WordBook {
         words.clear();
     }
 
-    // 간단 통계 문자열
+    // 통계 문자열
     public String getStatsString() {
         return "현재 저장된 단어 수 : " + size() + "개";
+    }
+
+    // 키워드로 부분 검색
+    public List<Word> search(String keyword) {
+        List<Word> result = new ArrayList<>();
+        if (keyword == null) return result;
+
+        String keyLower = keyword.toLowerCase().trim();
+        if (keyLower.isEmpty()) return result;
+
+        for (Word w : words) {
+            String eng = w.getEnglish();
+            String mean = w.getMeaning();
+
+            boolean match = false;
+
+            if (eng != null && eng.toLowerCase().contains(keyLower)) {
+                match = true;
+            }
+
+            if (!match && mean != null && mean.contains(keyword)) {
+                match = true;
+            }
+
+            if (match) {
+                result.add(w);
+            }
+        }
+        return result;
     }
 }

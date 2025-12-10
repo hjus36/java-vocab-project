@@ -26,7 +26,7 @@ public class MainFrame extends JFrame {
         this.quizManager = new QuizManager(book);
 
         setTitle("나만의 영어 단어장");
-        setSize(600, 420);
+        setSize(800, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -84,18 +84,23 @@ public class MainFrame extends JFrame {
         JButton addButton = new JButton("추가");
         JButton delButton = new JButton("삭제");
         JButton listButton = new JButton("목록");
+        JButton searchButton = new JButton("검색");
         JButton saveButton = new JButton("저장");
         JButton loadButton = new JButton("불러오기");
         JButton quizButton = new JButton("퀴즈");
         JButton statsButton = new JButton("통계");
+        JButton wrongNoteButton = new JButton("오답노트");
+
 
         buttonPanel.add(addButton);
         buttonPanel.add(delButton);
         buttonPanel.add(listButton);
+        buttonPanel.add(searchButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(loadButton);
         buttonPanel.add(quizButton);
         buttonPanel.add(statsButton);
+        buttonPanel.add(wrongNoteButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
 
@@ -148,6 +153,15 @@ public class MainFrame extends JFrame {
             }
         });
 
+        // 검색
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchWord();
+            }
+        });
+
+
         // 저장
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -177,6 +191,14 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 openStats();
+            }
+        });
+
+        // 오답노트
+        wrongNoteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showWrongNotes();
             }
         });
     }
@@ -263,6 +285,50 @@ public class MainFrame extends JFrame {
         outputArea.setText(sb.toString());
     }
 
+    // 단어 검색
+    private void searchWord() {
+        // 영어 입력칸의 텍스트를 키워드로 사용
+        String keyword = engField.getText().trim();
+
+        // 비어 있으면 입력창 띄워서 키워드 받기
+        if (keyword.isEmpty()) {
+            keyword = JOptionPane.showInputDialog(
+                    this,
+                    "검색할 단어(영어 또는 뜻 일부)를 입력하세요:",
+                    "단어 검색",
+                    JOptionPane.QUESTION_MESSAGE
+            );
+            if (keyword == null) return; // 취소
+            keyword = keyword.trim();
+        }
+
+        if (keyword.isEmpty()) {
+            return;
+        }
+
+        // WordBook에 검색 요청
+        java.util.List<Word> results = book.search(keyword);
+
+        if (results.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "검색 결과가 없습니다: " + keyword,
+                    "검색 결과 없음",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== 검색 결과 (키워드: ").append(keyword).append(") ===\n");
+        for (Word w : results) {
+            sb.append(w.toString()).append("\n");
+        }
+
+        outputArea.setText(sb.toString());
+    }
+
+
     // 단어장 저장
     private void saveWords() {
         boolean ok = fileManager.save(book, currentType);
@@ -316,5 +382,23 @@ public class MainFrame extends JFrame {
     // 통계 창 열기
     private void openStats() {
         new StatsFrame(book, quizManager);
+    }
+
+    // 오답노트 출력
+    private void showWrongNotes() {
+        List<Word> wrongs = quizManager.getWrongList();
+
+        if (wrongs.isEmpty()) {
+            outputArea.setText("오답노트가 비어 있습니다.\n퀴즈에서 틀린 단어가 없습니다!");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== 오답노트 ===\n");
+        for (Word w : wrongs) {
+            sb.append(w.toString()).append("\n");
+        }
+
+        outputArea.setText(sb.toString());
     }
 }
