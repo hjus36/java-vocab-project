@@ -21,19 +21,8 @@
 - VS Code
 - Git / GitHub
 
-## 패키지 구조
 
-- `src/vocab/App.java` : 메인 실행 클래스
-- `src/vocab/BookType.java` : 단어장 종류(전공/토익/JLPT) 관리
-- `src/vocab/Word.java` : 단어 한 개 정보
-- `src/vocab/WordBook.java` : 여러 단어 관리
-- `src/vocab/FileManager.java` : 파일 저장/불러오기
-- `src/vocab/MainFrame.java` : GUI 메인 화면
-- `src/vocab/QuizFrame.java` : GUI 단어 퀴즈 화면
-- `src/vocab/QuizManager.java` : 퀴즈 문제 제공/정답 체크/누적 통계 관리/오답리스트 관리
-- `src/vocab/StatsFrame.java` : 단어장/퀴즈 통계 화면
-
-## 현재 구현 현황 (4주차 최종)
+## 패키지 구조 및 구현 현황 (4주차 최종)
 
 | 클래스명       | 구현 상태   | 설명 |
 |----------------|-------------|-------|
