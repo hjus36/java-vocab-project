@@ -17,12 +17,12 @@ public enum BookType {
         return path;
     }
 
-    // 오답노트 파일 경로(뒤에 .wrong 추가하여 구분)
+    // 오답노트 파일(뒤에 .wrong 추가하여 구분)
     public String getWrongPath() {
-        return path + ".wrong";   // 예: major_vocab.txt.wrong
+        return path + ".wrong";
     }
 
-    // 콤보박스 등에 표시될 이름
+    // 콤보박스에 표시될 이름
     @Override
     public String toString() {
         switch (this) {

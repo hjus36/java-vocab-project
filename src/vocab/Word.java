@@ -20,7 +20,6 @@ public class Word {
         return meaning;
     }
 
-
     @Override
     public String toString() {
         return english + " : " + meaning;

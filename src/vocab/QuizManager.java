@@ -80,8 +80,6 @@ public class QuizManager {
         wrongList.clear();
     }
 
-
-
     public String getStatsString() {
         if (totalQuestions == 0) {
             return "아직 퀴즈 풀이 기록이 없습니다.";
