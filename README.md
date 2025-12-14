@@ -17,7 +17,7 @@
 
 ## 개발 환경
 
-- Java JDK 22
+- Java JDK 17
 - VS Code
 - Git / GitHub
 
